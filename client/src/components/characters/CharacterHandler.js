@@ -1,0 +1,97 @@
+// 角色加载模块
+import React, { useState, useEffect } from 'react';
+import AllCharacterComponents from '../../static/characters/AllCharacterComponents';
+import ClickableCharacterCard from './ClickableCharacterCard';
+import CharactersPaginator from './CharactersPaginator';
+import EmptyPagintor from '../EmptyPaginator';
+
+const CharacterHandler = ({ side, setCurrentCharacterPage, setCharacterActiveButton }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchOption, setSearchOption] = useState('title');
+    const [searchMessage, setSearchMessage] = useState('');
+    const [searchedCharacterArray, setSearchedCharacterArray] = useState([]);
+    const handleSearchInputChange = (event) => { setSearchTerm(event.target.value) };
+    const handleSearchOptionChange = (event) => { setSearchOption(event.target.value) };
+
+    const buttonClick = (label) => {
+        setCurrentCharacterPage(label);
+        setCharacterActiveButton(label);
+    }
+    const createCharacterCard = (element) => (
+        <ClickableCharacterCard
+            self={element}
+            imageUrl={element.imageUrl}
+            text={element.shortDescription}
+            title={element.name}
+            buttonClick={() => buttonClick(`characters_${element.idName}`)}
+            layoutReversed={false}
+        />
+    );
+
+    useEffect(() => {
+        let filteredCharacterElements = [];
+        if (side === '默认') { filteredCharacterElements = Object.values(AllCharacterComponents) }
+        else { filteredCharacterElements = Object.values(AllCharacterComponents).filter((element) => element.side.includes(side)) }
+        let searchedElements = [];
+        if (searchTerm === '') { searchedElements = JSON.parse(JSON.stringify(filteredCharacterElements)) }
+        else {
+            searchedElements = filteredCharacterElements.filter((element) => (
+                searchOption === 'title' ?
+                    element.fullname.includes(searchTerm) :
+                    (element.shortDescription.includes(searchTerm) ||
+                        element.story.some(str => str.includes(searchTerm)))
+            ))
+        }
+        const searchedCharacterCardsArray = searchedElements.map(createCharacterCard);
+        setSearchedCharacterArray(searchedCharacterCardsArray);
+        setSearchMessage(searchTerm);
+    }, [side, searchTerm, searchOption]);
+
+    return (
+        <>
+            {/* 搜索框 */}
+            <div className='container flex flex row'>
+                <div style={{ padding: '1rem', }}>
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={handleSearchInputChange}
+                        placeholder="输入搜索关键词"
+                    />
+                    <select value={searchOption} onChange={handleSearchOptionChange}>
+                        <option value="title">角色名</option>
+                        <option value="content">角色描述和背景</option>
+                    </select>
+                    <div>{searchMessage}</div>
+                </div>
+            </div>
+
+            <div className='container flex flex-row'>
+
+                {/* 角色展示页 */}
+                <div style={{
+                    padding: '1rem',
+                }}>
+                    {searchedCharacterArray.length === 0 ? (
+                        searchTerm === '' ? (
+                            <>
+                                <EmptyPagintor itemsArray={[`该阵营分类（${side}）下没有任何角色！`]} itemsPerPage={1} />
+                            </>
+                        ) : (
+                            <>
+                                <EmptyPagintor itemsArray={[`该阵营分类（${side}）下搜索不到${searchOption === 'title' ? '角色名' : '角色描述和背景'}为${searchTerm}的角色！`]} itemsPerPage={1} />
+                            </>
+                        )
+                    ) : (
+                        <>
+                            <CharactersPaginator itemsArray={searchedCharacterArray} itemsPerPage={8} />
+                        </>
+                    )}
+                </div>
+
+            </div>
+        </>
+    );
+}
+
+export default CharacterHandler;
