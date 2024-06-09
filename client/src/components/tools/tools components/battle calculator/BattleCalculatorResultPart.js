@@ -10,8 +10,6 @@ const defaultSelection = {
     damageType: '',
 }
 const defaultPercentage = {
-    damageBonus: '',
-    magicResist: '',
     meleePercentage: '',
     archeryPercentage: '',
     psychicPercentage: '',
@@ -387,7 +385,7 @@ const BattleCalculatorResultPart = ({ validStates, leftData, rightData }) => {
                             }}>
                                 （默认100%）
                             </td>
-                            {createTd(direct, 'resist', '受到伤害抗性')}
+                            {createTd(direct, 'resist', '受到伤害加成')}
                         </tr>
                     </tbody>
                 </table>

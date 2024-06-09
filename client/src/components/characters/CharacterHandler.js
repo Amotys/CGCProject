@@ -17,21 +17,23 @@ const CharacterHandler = ({ side, setCurrentCharacterPage, setCharacterActiveBut
         setCurrentCharacterPage(label);
         setCharacterActiveButton(label);
     }
-    const createCharacterCard = (element) => (
-        <ClickableCharacterCard
-            self={element}
-            imageUrl={element.imageUrl}
-            text={element.shortDescription}
-            title={element.name}
-            buttonClick={() => buttonClick(`characters_${element.idName}`)}
-            layoutReversed={false}
-        />
-    );
+    const createCharacterCard = (element) => {
+        return (
+            <ClickableCharacterCard
+                self={element}
+                imageUrl={element.imageUrl}
+                text={element.shortDescription}
+                title={element.name}
+                buttonClick={() => buttonClick(`characters_${element.idName}`)}
+                layoutReversed={false}
+            />
+        )
+    };
 
     useEffect(() => {
         let filteredCharacterElements = [];
-        if (side === '默认') { filteredCharacterElements = Object.values(AllCharacterComponents) }
-        else { filteredCharacterElements = Object.values(AllCharacterComponents).filter((element) => element.side.includes(side)) }
+        if (side === '默认') { filteredCharacterElements = Object.values(AllCharacterComponents).filter((element) => element.name) }
+        else { filteredCharacterElements = Object.values(AllCharacterComponents).filter((element) => element.name && element.side.includes(side)) }
         let searchedElements = [];
         if (searchTerm === '') { searchedElements = JSON.parse(JSON.stringify(filteredCharacterElements)) }
         else {
