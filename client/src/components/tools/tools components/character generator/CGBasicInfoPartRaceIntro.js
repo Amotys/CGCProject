@@ -24,23 +24,7 @@ const CGBasicInfoPartRaceIntro = ({ imageUrls, introInfos, data }) => {
                 justifyContent: 'center',
                 paddingBottom: '0rem',
             }}>{data['racePart']}</div>
-            {imageUrls.length >= 1 ? imageUrls.length >= 2 ?
-                <div className="container flex flex-row">
-                    <div className="container" style={{
-                        padding: '2rem',
-                        display: 'flex',
-                        justifyContent: 'right',
-                    }}>
-                        <img src={imageUrls[0]} alt={`${data['racePart']} M`} style={iconStyleDouble}></img>
-                    </div>
-                    <div className="container" style={{
-                        padding: '2rem',
-                        display: 'flex',
-                        justifyContent: 'left',
-                    }}>
-                        <img src={imageUrls[1]} alt={`${data['racePart']} F`} style={iconStyleDouble}></img>
-                    </div>
-                </div> :
+            {
                 <div className="container">
                     <div className="container" style={{
                         padding: '2rem',
@@ -49,8 +33,7 @@ const CGBasicInfoPartRaceIntro = ({ imageUrls, introInfos, data }) => {
                     }}>
                         <img src={imageUrls[0]} alt={`${data['racePart']}`} style={iconStyleSingle}></img>
                     </div>
-                </div> :
-                <></>
+                </div>
             }
             <div className="container" style={{
                 borderBottom: '0.01rem solid darkgreen',

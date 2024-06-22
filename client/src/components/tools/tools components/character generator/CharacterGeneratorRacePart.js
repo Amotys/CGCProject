@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ClickableCGRaceCard from "./ClickableCGRaceCard";
 import raceImages from '../../../../static/races/raceImages';
+import CGButton from './CGButton';
 
 const cardStyle = {
     padding: '1rem',
@@ -37,7 +38,7 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
         scrollToThisTop();
     }, []); // 仅在组件挂载时执行一次
 
-    const racePartClick = (race) => {
+    const nextPage = (race) => {
         const newData = {
             ...data,
             'racePart': race,
@@ -65,7 +66,7 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
                         __html: textArray.join('<br>')
                     }} />}
                     title={title}
-                    buttonClick={() => racePartClick(title)}
+                    buttonClick={() => nextPage(title)}
                     layoutReversed={false}
                 />
             </div>
@@ -302,8 +303,12 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
                         {createRaceCard([
                         ], '灵能体', raceImages.psyche)}
                     </div> : <></>}
-                <div>
-                    <button onClick={() => backPage()}>返回</button>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: '2rem',
+                }}>
+                    <CGButton label={'上一步'} onClick={() => backPage()} />
                 </div>
             </div>
         </div>

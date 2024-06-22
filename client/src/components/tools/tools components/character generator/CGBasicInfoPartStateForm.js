@@ -1,6 +1,7 @@
 // ※这可能是唯一一个长度超过600行的JS文件※
 
 import React, { useState } from "react";
+import CGButton from './CGButton';
 
 const tableTdPadding = '0.6rem'
 const subStateErrorMessage1 = '未填完' // 有属性没写完
@@ -13,19 +14,16 @@ const exampleTableTitleStyle = {
     width: '5rem',
     textAlign: 'center',
 }
-
 const exampleTableContentStyle = {
     border: '0.01rem solid darkgreen',
     padding: tableTdPadding,
 }
-
 const inputTableTitleStyle = {
     //border: '0.01rem solid darkgreen',
     padding: tableTdPadding,
     fontWeight: 'bold',
     textAlign: 'center',
 }
-
 const inputBarStyle = {
     border: '0.05rem solid darkgreen',
     borderRadius: '0.5rem',
@@ -33,69 +31,45 @@ const inputBarStyle = {
     width: '100%',
     backgroundColor: '#fdffe0',
 }
-
 const inputTableContentStyle = {
     //border: '0.01rem solid darkgreen',
     padding: tableTdPadding,
 }
-
 const errorTableContentStyle = {
     padding: '0.3rem',
     color: 'green',
     fontWeight: 'bold',
 }
 
-const getLowerAndUpper = (string) => {
-    const parts = string.split('~')
-    return [parseInt(parts[0]), parts[1] === "" ? 32768 : parseInt(parts[1])]
-}
-
-const validNonnegativeInteger = (string) => {
-    return parseInt(string) >= 0 && /^\d+$/.test(string)
-}
-
-const validIntegerRange = (integer, string) => {
-    const [lower, upper] = getLowerAndUpper(string)
-    return integer >= lower && integer <= upper
-}
-
-const getLevel = (expString) => {
-    const exp = parseInt(expString)
-    if (exp >= 0) {
-        if (exp >= 1252500) { return 500 }
-        let l = 1
-        while ((10 + 10 * l) * l / 2 <= exp) { l += 1 }
-        return l - 1
-    } else { return 0 }
-}
-
-const getPoint = (numberString) => {
-    const number = parseInt(numberString)
-    if (!(number > 0)) { return 0 }
-    if (number <= 600) { return number }
-    else if (number <= 800) { return Math.ceil(600 + (number - 600) * 1.5) }
-    else if (number <= 1000) { return Math.ceil(900 + (number - 800) * 2) }
-    else { return Math.ceil(1300 + (number - 1000) * 3) }
-}
-
-const CGBasicInfoPartStateForm = ({ data, statesInfos }) => {
-    const [formStates, setFormStates] = useState(
-        {
-            name: '',
-            age: '',
-            gender: '',
-            sizeFactor: '',
-            experience: '',
-            strength: '',
-            constitution: '',
-            agility: '',
-            willpower: '',
-            intelligence: '',
-            power: '',
-            appearance: '',
-            luck: '',
-        }
-    )
+const CGBasicInfoPartStateForm = ({ statesInfos, formStates, setFormStates, errorMessage, setErrorMessage }) => {
+    const getLowerAndUpper = (string) => {
+        const parts = string.split('~')
+        return [parseInt(parts[0]), parts[1] === "" ? 32768 : parseInt(parts[1])]
+    }
+    const validNonnegativeInteger = (string) => { return parseInt(string) >= 0 && /^\d+$/.test(string) }
+    const validIntegerRange = (integer, string) => {
+        const [lower, upper] = getLowerAndUpper(string)
+        return integer >= lower && integer <= upper
+    }
+    const getLevel = (expString) => {
+        const exp = parseInt(expString)
+        if (exp >= 0) {
+            if (exp >= 1252500) { return 500 }
+            let l = 1
+            while ((10 + 10 * l) * l / 2 <= exp) { l += 1 }
+            return l - 1
+        } else { return 0 }
+    }
+    const getPoint = (numberString) => {
+        const number = parseInt(numberString)
+        if (!(number > 0)) { return 0 }
+        if (number <= 600) { return number }
+        else if (number <= 800) { return Math.ceil(600 + (number - 600) * 1.5) }
+        else if (number <= 1000) { return Math.ceil(900 + (number - 800) * 2) }
+        else { return Math.ceil(1300 + (number - 1000) * 3) }
+    }
+    const backStep = () => { }
+    const nextStep = () => { }
 
     const getAllStatesTotalPoint = () => {
         return getPoint(formStates.strength) + getPoint(formStates.constitution) +
@@ -103,106 +77,159 @@ const CGBasicInfoPartStateForm = ({ data, statesInfos }) => {
             getPoint(formStates.intelligence) + getPoint(formStates.power) +
             getPoint(formStates.appearance) + getPoint(formStates.luck)
     }
-
-    const [errorMessage, setErrorMessage] = useState(
-        {
-            name: '名字尚未填完！',
-            age: '年龄尚未填完！',
-            gender: '性别尚未选择！',
-            sizeFactor: '体积指数尚未填完！',
-            experience: '阅历尚未填完！',
-            strength: '力量属性尚未填完！',
-            constitution: '体质属性尚未填完！',
-            agility: '灵巧属性尚未填完！',
-            willpower: '意志属性尚未填完！',
-            intelligence: '智慧属性尚未填完！',
-            power: '魔力属性尚未填完！',
-            appearance: '魅力属性尚未填完！',
-            luck: '幸运属性尚未填完！',
-        }
-    )
-
-    const handleInputChange = (event) => {
+    const handleInputChange = (event, isInteger) => {
         const { name, value } = event.target
-        setFormStates({
-            ...formStates,
-            [name]: value,
-        })
-
-        const translateName = {
-            name: '名字',
-            age: '年龄',
-            gender: '性别',
-            sizeFactor: '体积指数',
-            experience: '阅历',
-            strength: '力量属性',
-            constitution: '体质属性',
-            agility: '灵巧属性',
-            willpower: '意志属性',
-            intelligence: '智慧属性',
-            power: '魔力属性',
-            appearance: '外貌属性',
-            luck: '幸运属性',
-        }
-
-        const getStateIndex = {
-            strength: 4,
-            constitution: 5,
-            agility: 6,
-            willpower: 7,
-            intelligence: 8,
-            power: 9,
-            appearance: 10,
-            luck: 11,
-        }
-
-        if (value === '') {
-            if (name === 'gender') {
-                setErrorMessage({
-                    ...errorMessage,
-                    [name]: `${translateName[name]}尚未选择！`,
-                })
-            } else {
-                setErrorMessage({
-                    ...errorMessage,
-                    [name]: `${translateName[name]}尚未填完！`,
-                })
+        const allowedChars = /^[0-9]*$/
+        if (!isInteger || (isInteger && allowedChars.test(value))) {
+            setFormStates({
+                ...formStates,
+                [name]: value,
+            })
+            const translateName = {
+                name: '名字',
+                age: '年龄',
+                gender: '性别',
+                sizeFactor: '体积指数',
+                experience: '阅历',
+                strength: '力量属性',
+                constitution: '体质属性',
+                agility: '灵巧属性',
+                willpower: '意志属性',
+                intelligence: '智慧属性',
+                power: '魔力属性',
+                appearance: '外貌属性',
+                luck: '幸运属性',
             }
-        } else if (['strength', 'constitution', 'agility', 'willpower', 'intelligence', 'power', 'appearance', 'luck'].includes(name)) {
-            if (!validNonnegativeInteger(value)) {
-                setErrorMessage({
-                    ...errorMessage,
-                    [name]: `${translateName[name]}必须为正整数！`,
-                })
-            } else if (!validIntegerRange(parseInt(value), statesInfos[0][getStateIndex[name]])) {
-                setErrorMessage({
-                    ...errorMessage,
-                    [name]: `${translateName[name]}不在范围内！`,
-                })
-            } else {
-                setErrorMessage({
-                    ...errorMessage,
-                    [name]: `${translateName[name]}填写完成，消耗属性点数${getPoint(value)}！`,
-                })
+            const getStateIndex = {
+                strength: 4,
+                constitution: 5,
+                agility: 6,
+                willpower: 7,
+                intelligence: 8,
+                power: 9,
+                appearance: 10,
+                luck: 11,
             }
-        } else if (['age', 'sizeFactor', 'gender'].includes(name)) {
-            if (name === 'age') { }
-            else if (name === 'sizeFactor') { }
-            else { }
-        } else if (['experience', 'name'].includes(name)) {
-            if (name === 'experience' && validNonnegativeInteger(value)) {
-                setErrorMessage({
-                    ...errorMessage,
-                    [name]: `${translateName[name]}填写完成，角色等级为${getLevel(value)}！`,
-                })
-            } else {
-                setErrorMessage({
-                    ...errorMessage,
-                    [name]: `${translateName[name]}填写完成！`,
-                })
+            if (value === '') {
+                if (name === 'gender') {
+                    setErrorMessage({
+                        ...errorMessage,
+                        [name]: `${translateName[name]}尚未选择！`,
+                    })
+                } else {
+                    setErrorMessage({
+                        ...errorMessage,
+                        [name]: `${translateName[name]}尚未填完！`,
+                    })
+                }
+            } else if (['strength', 'constitution', 'agility', 'willpower', 'intelligence', 'power', 'appearance', 'luck'].includes(name)) {
+                if (!validNonnegativeInteger(value)) {
+                    setErrorMessage({
+                        ...errorMessage,
+                        [name]: `${translateName[name]}属性必须为正整数！`,
+                    })
+                } else if (!validIntegerRange(parseInt(value), statesInfos[0][getStateIndex[name]])) {
+                    setErrorMessage({
+                        ...errorMessage,
+                        [name]: `${translateName[name]}属性不在范围内！`,
+                    })
+                } else {
+                    setErrorMessage({
+                        ...errorMessage,
+                        [name]: `${translateName[name]}属性填写完成，消耗属性点数${getPoint(value)}！`,
+                    })
+                }
+            } else if (['age', 'sizeFactor', 'gender'].includes(name)) {
+                if (name === 'age') {
+                    if (!validNonnegativeInteger(value)) {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}必须为正整数！`,
+                        })
+                    } else if (!validIntegerRange(parseInt(value), `0~${statesInfos[0][1].match(/(.*?)年/)[1]}`)) {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}不在寿命范围内！`,
+                        })
+                    } else {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}填写完成！`,
+                        })
+                    }
+                }
+                else if (name === 'sizeFactor') {
+                    if (!validNonnegativeInteger(value)) {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}必须为正整数！`,
+                        })
+                    } else if (!validIntegerRange(parseInt(value), statesInfos[0][2])) {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}不在体积指数范围内！`,
+                        })
+                    } else {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}填写完成！`,
+                        })
+                    }
+                }
+                else {
+                    alert(value)
+                    if (value) {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}必须为正整数！`,
+                        })
+                    } else if (!validIntegerRange(parseInt(value), statesInfos[0][2])) {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}不在体积指数范围内！`,
+                        })
+                    } else {
+                        setErrorMessage({
+                            ...errorMessage,
+                            [name]: `${translateName[name]}填写完成！`,
+                        })
+                    }
+                }
+            } else if (['experience', 'name'].includes(name)) {
+                if (name === 'experience' && validNonnegativeInteger(value)) {
+                    setErrorMessage({
+                        ...errorMessage,
+                        [name]: `${translateName[name]}填写完成，角色等级为${getLevel(value)}！`,
+                    })
+                } else {
+                    setErrorMessage({
+                        ...errorMessage,
+                        [name]: `${translateName[name]}填写完成！`,
+                    })
+                }
             }
         }
     }
+    const createTableTr = (label, valueName, idName, placeholder, isInteger) => (
+        <tr key={`CGBIP table tr ${label} ${valueName}`}>
+            <td style={inputTableTitleStyle}>
+                <label htmlFor={idName}>
+                    {label}
+                </label>
+            </td>
+            <td style={inputTableContentStyle}>
+                <input
+                    type="text"
+                    name={valueName}
+                    id={idName}
+                    value={formStates[valueName]}
+                    onChange={(event) => handleInputChange(event, isInteger)}
+                    placeholder={placeholder}
+                    style={inputBarStyle}
+                />
+            </td>
+        </tr>
+    )
 
     return (
         <div className="container flex flex-col">
@@ -218,42 +245,8 @@ const CGBasicInfoPartStateForm = ({ data, statesInfos }) => {
                         <div style={{ padding: '2rem', height: '100%', }}>
                             <table className="container" style={{ height: '100%', }}>
                                 <tbody>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="nameInput">
-                                                角色名
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="text"
-                                                name='name'
-                                                id='nameInput'
-                                                value={formStates.name}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的名字"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="ageInput">
-                                                角色年龄
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name='age'
-                                                id='ageInput'
-                                                value={formStates.age}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的年龄"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
+                                    {createTableTr('角色名', 'name', 'nameInput', '请填写角色的名字', false)}
+                                    {createTableTr('角色年龄', 'age', 'ageInput', '请填写角色的年龄', true)}
                                     <tr>
                                         <td style={inputTableTitleStyle}>
                                             <label htmlFor="genderInput">
@@ -276,42 +269,8 @@ const CGBasicInfoPartStateForm = ({ data, statesInfos }) => {
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="sizeFactorInput">
-                                                角色体积指数
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name='sizeFactor'
-                                                id='sizeFactorInput'
-                                                value={formStates.sizeFactor}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的体积指数"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="experienceInput">
-                                                角色阅历
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name='experience'
-                                                id='experienceInput'
-                                                value={formStates.experience}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的阅历"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
+                                    {createTableTr('角色体积指数', 'sizeFactor', 'sizeFactorInput', '请填写角色的体积指数', true)}
+                                    {createTableTr('角色阅历', 'experience', 'experienceInput', '请填写角色的阅历', true)}
                                 </tbody>
                             </table>
                         </div>
@@ -354,150 +313,14 @@ const CGBasicInfoPartStateForm = ({ data, statesInfos }) => {
                         <div style={{ padding: '2rem', }}>
                             <table className="container">
                                 <tbody>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="strengthInput">
-                                                {`角色力量（范围${statesInfos[0][4]}）`}
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name="strength"
-                                                id='strengthInput'
-                                                value={formStates.strength}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的力量属性"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="constitutionInput">
-                                                {`角色体质（范围${statesInfos[0][5]}）`}
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name="constitution"
-                                                id='constitutionInput'
-                                                value={formStates.constitution}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的体质属性"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="agilityInput">
-                                                {`角色灵巧（范围${statesInfos[0][6]}）`}
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name="agility"
-                                                id='agilityInput'
-                                                value={formStates.agility}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的灵巧属性"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="willpowerInput">
-                                                {`角色意志（范围${statesInfos[0][7]}）`}
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name="willpower"
-                                                id='willpowerInput'
-                                                value={formStates.willpower}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的意志属性"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="intelligenceInput">
-                                                {`角色智慧（范围${statesInfos[0][8]}）`}
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name="intelligence"
-                                                id='intelligenceInput'
-                                                value={formStates.intelligence}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的智慧属性"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="powerInput">
-                                                {`角色魔力（范围${statesInfos[0][9]}）`}
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name="power"
-                                                id='powerInput'
-                                                value={formStates.power}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的魔力属性"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="appearanceInput">
-                                                {`角色魅力（范围${statesInfos[0][10]}）`}
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name="appearance"
-                                                id='appearanceInput'
-                                                value={formStates.appearance}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的魅力属性"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={inputTableTitleStyle}>
-                                            <label htmlFor="luckInput">
-                                                {`角色幸运（范围${statesInfos[0][11]}）`}
-                                            </label>
-                                        </td>
-                                        <td style={inputTableContentStyle}>
-                                            <input
-                                                type="number"
-                                                name="luck"
-                                                id='luckInput'
-                                                value={formStates.luck}
-                                                onChange={handleInputChange}
-                                                placeholder="请填写角色的幸运属性"
-                                                style={inputBarStyle}
-                                            />
-                                        </td>
-                                    </tr>
+                                    {createTableTr(`角色力量（范围${statesInfos[0][4]}）`, 'strength', 'strengthInput', '请填写角色的力量属性', true)}
+                                    {createTableTr(`角色体质（范围${statesInfos[0][5]}）`, 'constitution', 'constitutionInput', '请填写角色的体质属性', true)}
+                                    {createTableTr(`角色灵巧（范围${statesInfos[0][6]}）`, 'agility', 'agilityInput', '请填写角色的灵巧属性', true)}
+                                    {createTableTr(`角色意志（范围${statesInfos[0][7]}）`, 'willpower', 'willpowerInput', '请填写角色的意志属性', true)}
+                                    {createTableTr(`角色智慧（范围${statesInfos[0][8]}）`, 'intelligence', 'intelligenceInput', '请填写角色的智慧属性', true)}
+                                    {createTableTr(`角色魔力（范围${statesInfos[0][9]}）`, 'power', 'powerInput', '请填写角色的魔力属性', true)}
+                                    {createTableTr(`角色魅力（范围${statesInfos[0][10]}）`, 'appearance', 'appearanceInput', '请填写角色的魅力属性', true)}
+                                    {createTableTr(`角色幸运（范围${statesInfos[0][11]}）`, 'luck', 'luckInput', '请填写角色的幸运属性', true)}
                                 </tbody>
                             </table>
                         </div>
@@ -512,6 +335,7 @@ const CGBasicInfoPartStateForm = ({ data, statesInfos }) => {
                 }}>
                     <table style={{ width: '100%', }}>
                         <tbody>
+                            {/* 包含大量公式，因此不适合模块化 */}
                             <tr>
                                 <td style={exampleTableTitleStyle}>健康值</td>
                                 <td style={exampleTableTitleStyle}>{

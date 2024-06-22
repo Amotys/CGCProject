@@ -49,22 +49,62 @@ const CharacterHandler = ({ side, setCurrentCharacterPage, setCharacterActiveBut
         setSearchMessage(searchTerm);
     }, [side, searchTerm, searchOption]);
 
+    const characterSearchBoxStyle = {
+        padding: '0.5rem',
+        width: '100%',
+        border: '0.2rem solid darkgreen',
+        borderRadius: '0.5rem',
+        backgroundColor: '#e9ffe0',
+    }
+    const characterSearchSelectionStyle = {
+        padding: '0.5rem',
+        width: '100%',
+        border: '0.2rem solid darkgreen',
+        borderRadius: '0.5rem',
+        backgroundColor: '#c8e6bc',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'darkgreen',
+    }
+
     return (
-        <>
+        <div className='container'>
             {/* 搜索框 */}
-            <div className='container flex flex row'>
-                <div style={{ padding: '1rem', }}>
-                    <input
-                        type="text"
-                        value={searchTerm}
-                        onChange={handleSearchInputChange}
-                        placeholder="输入搜索关键词"
-                    />
-                    <select value={searchOption} onChange={handleSearchOptionChange}>
-                        <option value="title">角色名</option>
-                        <option value="content">角色描述和背景</option>
-                    </select>
-                    <div>{searchMessage}</div>
+            <div className='container flex' style={{ paddingTop: '0.5rem', }}>
+                <div className='container flex flex-row' style={{
+                    padding: '1rem',
+                }}>
+                    <div className='container flex flex-row' style={{
+                        width: '70%',
+                    }}>
+                        <div style={{ width: '10%', }}></div>
+                        <div style={{ width: '80%', }}>
+                            <input
+                                type="text"
+                                value={searchTerm}
+                                onChange={handleSearchInputChange}
+                                placeholder="输入搜索关键词"
+                                style={characterSearchBoxStyle}
+                            />
+                        </div>
+                        <div style={{ width: '10%', }}></div>
+                    </div>
+                    <div className='container flex flex-row' style={{
+                        width: '30%',
+                    }}>
+                        <div style={{ width: '10%', }}></div>
+                        <div style={{ width: '70%', }}>
+                            <select
+                                value={searchOption}
+                                onChange={handleSearchOptionChange}
+                                style={characterSearchSelectionStyle}
+                            >
+                                <option value="title">角色名</option>
+                                <option value="content">角色描述和背景</option>
+                            </select>
+                        </div>
+                        <div style={{ width: '20%', }}></div>
+                    </div>
                 </div>
             </div>
 
@@ -92,7 +132,7 @@ const CharacterHandler = ({ side, setCurrentCharacterPage, setCharacterActiveBut
                 </div>
 
             </div>
-        </>
+        </div>
     );
 }
 
