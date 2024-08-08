@@ -2,11 +2,12 @@
 
 import React from 'react';
 import SideUnits from './side units/SideUnits';
+import PVPSideUnits from './side units/pvp/PVPSideUnits';
 
 const Library = () => {
     return (
         <div className='container flex flex-col'>
-            <SideUnits />
+            <PVPSideUnits />
             <div style={{
                 padding: '2rem',
             }}>
