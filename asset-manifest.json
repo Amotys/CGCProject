@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CGCProject/static/css/main.460f6b92.css",
-    "main.js": "/CGCProject/static/js/main.3d76108b.js",
+    "main.js": "/CGCProject/static/js/main.dd3b6d4f.js",
     "static/js/453.258b012d.chunk.js": "/CGCProject/static/js/453.258b012d.chunk.js",
     "static/media/MainTheme.mp3": "/CGCProject/static/media/MainTheme.60cb9f20b052c9156107.mp3",
     "static/media/OthersHuaDiao.png": "/CGCProject/static/media/OthersHuaDiao.d95351dcd59b7dae3c85.png",
@@ -12,7 +12,6 @@
     "static/media/Main.png": "/CGCProject/static/media/Main.0be2a6e2cee62549f147.png",
     "static/media/CourtLiuyuqing.png": "/CGCProject/static/media/CourtLiuyuqing.78fe4a11a5ca54b6f80e.png",
     "static/media/Library.png": "/CGCProject/static/media/Library.a5a3a93b0b54f4555060.png",
-    "static/media/NaturalResources.png": "/CGCProject/static/media/NaturalResources.b86a61b9d92ba96a3a93.png",
     "static/media/Characters.png": "/CGCProject/static/media/Characters.befaf8479987778e239c.png",
     "static/media/Geography.png": "/CGCProject/static/media/Geography.0a252726fc4a55ff0f0e.png",
     "static/media/Worldview.png": "/CGCProject/static/media/Worldview.2094adf1711e77a4ffe2.png",
@@ -296,11 +295,11 @@
     "static/media/Food.png": "/CGCProject/static/media/Food.fb6d548d826554dbcc88.png",
     "index.html": "/CGCProject/index.html",
     "main.460f6b92.css.map": "/CGCProject/static/css/main.460f6b92.css.map",
-    "main.3d76108b.js.map": "/CGCProject/static/js/main.3d76108b.js.map",
+    "main.dd3b6d4f.js.map": "/CGCProject/static/js/main.dd3b6d4f.js.map",
     "453.258b012d.chunk.js.map": "/CGCProject/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.460f6b92.css",
-    "static/js/main.3d76108b.js"
+    "static/js/main.dd3b6d4f.js"
   ]
 }
