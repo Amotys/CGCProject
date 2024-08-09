@@ -15,11 +15,11 @@ const PVPUnitInfo = ({ unit }) => {
                 <td style={contentStyle}>{
                     title.includes('费用') ? (
                         <div className="flex flex-row">
-                            <img src={Wood} style={iconStyle} />
+                            <img src={Wood} alt='wood icon' style={iconStyle} />
                             <span style={spanStyle}>{value[0]}</span>
-                            <img src={Food} style={iconStyle} />
+                            <img src={Food} alt='food icon' style={iconStyle} />
                             <span style={spanStyle}>{value[1]}</span>
-                            <img src={Crystal} style={iconStyle} />
+                            <img src={Crystal} alt='crystal icon' style={iconStyle} />
                             <span style={spanStyle}>{value[2]}</span>
                         </div>
                     )
@@ -50,7 +50,7 @@ const PVPUnitInfo = ({ unit }) => {
                                         {createTr('维护费用', unit.costMaintain, 'pvp info cost 2')}
                                         {createTr('训练时长', `${unit.costTime}回合`, 'pvp info cost 3')}
                                         {createTr('占用人口', unit.population, 'pvp info cost 4')}
-                                        {unit.requirement.length != 0 && createTr('建造需求', unit.requirement.join('、'), 'pvp info requirement')}
+                                        {unit.requirement.length !== 0 && createTr('建造需求', unit.requirement.join('、'), 'pvp info requirement')}
                                     </tbody>
                                 </table>
                             </div>
@@ -59,11 +59,11 @@ const PVPUnitInfo = ({ unit }) => {
                             <div style={{ paddingLeft: '0', padding: '2rem', height: '100%' }}>
                                 <table style={{ width: '100%', height: '100%' }}>
                                     <tbody>
-                                        {unit.healthRegenerate == 0 ?
+                                        {unit.healthRegenerate === 0 ?
                                             createTr('健康值', `${unit.health}`, 'pvp info unit hp') :
                                             createTr('健康值', `${unit.health}（+${unit.healthRegenerate}/回合）`, 'pvp info unit hp')
                                         }
-                                        {unit.manaRegenerate == 0 ?
+                                        {unit.manaRegenerate === 0 ?
                                             createTr('魔法值', `${unit.mana}`, 'pvp info unit mp') :
                                             createTr('魔法值', `${unit.mana}（+${unit.manaRegenerate}/回合）`, 'pvp info unit mp')
                                         }
@@ -87,7 +87,7 @@ const PVPUnitInfo = ({ unit }) => {
 
             {/* 详细信息部分 */}
             <div>
-                {unit.attackMethod.length != 0 &&
+                {unit.attackMethod.length !== 0 &&
                     <div style={{ paddingBottom: '2rem' }}>
                         <table style={{ width: '100%' }}>
                             <tbody>
@@ -99,7 +99,7 @@ const PVPUnitInfo = ({ unit }) => {
                             </tbody>
                         </table>
                     </div>}
-                {Object.keys(unit.abilities).length != 0 &&
+                {Object.keys(unit.abilities).length !== 0 &&
                     <div style={{ paddingBottom: '2rem' }}>
                         <table style={{ width: '100%' }}>
                             <tbody>

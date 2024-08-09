@@ -1,6 +1,4 @@
-import React from "react"
 import { createUnit } from '../Functions'
-
 import InariHuntsman from '../../../../images/monsters/inari/InariHuntsman.png'
 import InariHuntsmanIcon from '../../../../images/monsters/inari/icon/InariHuntsmanIcon.png'
 import InariShortbowAssassin from '../../../../images/monsters/inari/InariShortbowAssassin.png'

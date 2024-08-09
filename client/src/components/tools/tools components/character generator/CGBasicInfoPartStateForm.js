@@ -1,6 +1,6 @@
 // ※这可能是唯一一个长度超过600行的JS文件※
 
-import React, { useState } from "react";
+import React from "react";
 import CGButton from './CGButton';
 
 const tableTdPadding = '0.6rem'
@@ -292,7 +292,7 @@ const CGBasicInfoPartStateForm = ({ statesInfos, formStates, setFormStates, erro
                             }}>
                                 <tbody >
                                     {Object.keys(errorMessage).map((element, index) => (
-                                        errorMessage[element] != '' ?
+                                        errorMessage[element] !== '' ?
                                             <tr key={`CG basic info part state form error ${index}`}>
                                                 <td style={
                                                     errorMessage[element].includes('填写完成') ? errorTableContentStyle :

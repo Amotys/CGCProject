@@ -11,7 +11,7 @@ const CGBasicInfoPartStateDescription = ({ data, statesInfos }) => {
                 padding: '2rem',
                 paddingTop: '0.5rem',
             }}>
-                {data['typePart'] == 'PC' || data['typePart'] == 'NPC' ?
+                {data['typePart'] === 'PC' || data['typePart'] === 'NPC' ?
                     <table>
                         <tbody>
                             <tr >

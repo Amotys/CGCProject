@@ -15,11 +15,11 @@ const PVPBuildingInfo = ({ unit }) => {
                 <td style={contentStyle}>{
                     title.includes('费用') ? (
                         <div className="flex flex-row">
-                            <img src={Wood} style={iconStyle} />
+                            <img src={Wood} alt='wood icon' style={iconStyle} />
                             <span style={spanStyle}>{value[0]}</span>
-                            <img src={Food} style={iconStyle} />
+                            <img src={Food} alt='food icon' style={iconStyle} />
                             <span style={spanStyle}>{value[1]}</span>
-                            <img src={Crystal} style={iconStyle} />
+                            <img src={Crystal} alt='crystal icon' style={iconStyle} />
                             <span style={spanStyle}>{value[2]}</span>
                             {title.includes('维修费用') && <span>{`/${value[3]}健康值`}</span>}
                         </div>
@@ -50,9 +50,9 @@ const PVPBuildingInfo = ({ unit }) => {
                                         {createTr('建造费用', unit.costMaterial, 'pvp info building cost 1')}
                                         {createTr('维修费用', unit.costRepair, 'pvp info building cost 2')}
                                         {createTr('建造时长', `${unit.costBuildTime}回合`, 'pvp info building cost 3')}
-                                        {(unit.population[0] != 0 || unit.population[1] != 0) && createTr(unit.population[1] != 0 ? '提供人口' : '占用人口',
-                                            unit.population[1] != 0 ? unit.population[1] : unit.population[0], 'pvp info building cost 4')}
-                                        {unit.requirement.length != 0 && createTr('建造需求', unit.requirement.join('、'), 'pvp info building requirement')}
+                                        {(unit.population[0] !== 0 || unit.population[1] !== 0) && createTr(unit.population[1] !== 0 ? '提供人口' : '占用人口',
+                                            unit.population[1] !== 0 ? unit.population[1] : unit.population[0], 'pvp info building cost 4')}
+                                        {unit.requirement.length !== 0 && createTr('建造需求', unit.requirement.join('、'), 'pvp info building requirement')}
                                     </tbody>
                                 </table>
                             </div>
@@ -61,17 +61,17 @@ const PVPBuildingInfo = ({ unit }) => {
                             <div style={{ paddingLeft: '0', padding: '2rem', height: '100%' }}>
                                 <table style={{ width: '100%', height: '100%' }}>
                                     <tbody>
-                                        {unit.healthRegenerate == 0 ?
+                                        {unit.healthRegenerate === 0 ?
                                             createTr('健康值', `${unit.health}`, 'pvp info building hp') :
                                             createTr('健康值', `${unit.health}（+${unit.healthRegenerate}/回合）`, 'pvp info building hp')
                                         }
-                                        {unit.manaRegenerate == 0 ?
+                                        {unit.manaRegenerate === 0 ?
                                             createTr('魔法值', `${unit.mana}`, 'pvp info building mp') :
                                             createTr('魔法值', `${unit.mana}（+${unit.manaRegenerate}/回合）`, 'pvp info building mp')
                                         }
-                                        {unit.atk != 0 && createTr('攻击力', unit.atk, 'pvp info building atk')}
+                                        {unit.atk !== 0 && createTr('攻击力', unit.atk, 'pvp info building atk')}
                                         {createTr('防御力', unit.def, 'pvp info building def')}
-                                        {unit.dmg != 0 && createTr('伤害值', unit.dmg, 'pvp info building dmg')}
+                                        {unit.dmg !== 0 && createTr('伤害值', unit.dmg, 'pvp info building dmg')}
                                         {createTr('建筑面积', unit.size, 'pvp info building size')}
                                     </tbody>
                                 </table>
@@ -85,7 +85,7 @@ const PVPBuildingInfo = ({ unit }) => {
 
             {/* 详细信息部分 */}
             <div>
-                {unit.attackMethod.length != 0 &&
+                {unit.attackMethod.length !== 0 &&
                     <div style={{ paddingBottom: '2rem' }}>
                         <table style={{ width: '100%' }}>
                             <tbody>
@@ -95,7 +95,7 @@ const PVPBuildingInfo = ({ unit }) => {
                             </tbody>
                         </table>
                     </div>}
-                {Object.keys(unit.abilities).length != 0 &&
+                {Object.keys(unit.abilities).length !== 0 &&
                     <div style={{ paddingBottom: '2rem' }}>
                         <table style={{ width: '100%' }}>
                             <tbody>
@@ -105,7 +105,7 @@ const PVPBuildingInfo = ({ unit }) => {
                             </tbody>
                         </table>
                     </div>}
-                {Object.keys(unit.technologies).length != 0 &&
+                {Object.keys(unit.technologies).length !== 0 &&
                     <div style={{ paddingBottom: '2rem' }}>
                         <table style={{ width: '100%' }}>
                             <tbody>
@@ -114,11 +114,11 @@ const PVPBuildingInfo = ({ unit }) => {
                                         <td style={{ ...titleStyle, minWidth: '7.5rem' }}>{key}</td>
                                         <td style={{ ...contentStyle, minWidth: '12rem' }}>
                                             <div className="flex flex-row">
-                                                <img src={Wood} style={iconStyle} />
+                                                <img src={Wood} alt='wood icon' style={iconStyle} />
                                                 <span style={spanStyle}>{value[0]}</span>
-                                                <img src={Food} style={iconStyle} />
+                                                <img src={Food} alt='food icon' style={iconStyle} />
                                                 <span style={spanStyle}>{value[1]}</span>
-                                                <img src={Crystal} style={iconStyle} />
+                                                <img src={Crystal} alt='crystal icon' style={iconStyle} />
                                                 <span style={spanStyle}>{value[2]}</span>
                                             </div>
                                         </td>
@@ -127,7 +127,7 @@ const PVPBuildingInfo = ({ unit }) => {
                                         </td>
                                         <td style={{ ...contentStyle, minWidth: '9rem' }}>
                                             {
-                                                '需求：' + (value[4].length == 0 ? '无' : value[4].join('、'))
+                                                '需求：' + (value[4].length === 0 ? '无' : value[4].join('、'))
                                             }
                                         </td>
                                         <td style={contentStyle}>{value[5]}</td>

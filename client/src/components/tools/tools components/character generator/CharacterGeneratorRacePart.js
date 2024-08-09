@@ -75,7 +75,7 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
     return (
         <div className="container" id='character_generator_race_part'>
             <div>
-                {data['typePart'] == 'PC' ?
+                {data['typePart'] === 'PC' ?
                     <>
                         <div style={detailTitleStyle}>你选择的角色类型为玩家角色（PC）</div>
                         <table style={detailTableStyle}>
@@ -99,7 +99,7 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
                             </tbody>
                         </table>
                     </> :
-                    data['typePart'] == 'NPC' ?
+                    data['typePart'] === 'NPC' ?
                         <>
                             <div style={detailTitleStyle}>你选择的角色类型为非玩家角色（NPC）</div>
                             <table style={detailTableStyle}>
@@ -122,7 +122,7 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
                                     </tr>
                                 </tbody>
                             </table>
-                        </> : data['typePart'] == 'MONSTER' ?
+                        </> : data['typePart'] === 'MONSTER' ?
                             <>
                                 <div style={detailTitleStyle}>你选择的角色类型为怪物（Monster）</div>
                                 <table style={detailTableStyle}>
@@ -247,7 +247,7 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
                         '体型指数：1~2',
                         '数量：35,000',
                     ], '帕加罗', raceImages.pagallo.lead)}
-                    {data['typePart'] == 'MONSTER' ?
+                    {data['typePart'] === 'MONSTER' ?
                         <>
                             {createRaceCard([
                                 '起源：黄金纪元',
@@ -270,7 +270,7 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
                             {createRaceCard([
                             ], '野生(智慧生物)', raceImages.wild.wise)}
                         </> :
-                        data['typePart'] == 'NPC' ?
+                        data['typePart'] === 'NPC' ?
                             <>
                                 {createRaceCard([
                                     '起源：黄金纪元',
@@ -290,7 +290,7 @@ const CharacterGeneratorTypePart = ({ setCurrentStep, data, setData }) => {
                             </>
                     }
                 </div>
-                {data['typePart'] == 'MONSTER' ?
+                {data['typePart'] === 'MONSTER' ?
                     <div className="container flex flex-row">
                         {createRaceCard([
                         ], '创造物', raceImages.creature)}

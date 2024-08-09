@@ -117,7 +117,7 @@ const getIntroInfo = (race) => {
 }
 
 const getStatesInfo = (race, data) => {
-    if (data['typePart'] == 'PC' || data['typePart'] == 'NPC') {
+    if (data['typePart'] === 'PC' || data['typePart'] === 'NPC') {
         switch (race) {
             case '人类':
                 return [

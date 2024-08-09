@@ -1,7 +1,4 @@
 import React from "react";
-import Crystal from '../../../../static/images/icons/Crystal.png'
-import Wood from '../../../../static/images/icons/Wood.png'
-import Food from '../../../../static/images/icons/Food.png'
 
 const nameStyle = {
     textAlign: 'center',
@@ -36,8 +33,6 @@ const PVPUnitInfo = ({ unit }) => {
     const titleStyle = { fontWeight: 'bold', border: '0.05rem solid darkgreen', padding: '0.5rem', width: '20%', }
     const contentStyle = { border: '0.05rem solid darkgreen', padding: '0.5rem' }
     const createTr = (title, value, key) => {
-        const iconStyle = { height: '1.5rem' }
-        const spanStyle = { paddingRight: '0.5rem' }
         return (
             Array.isArray(value) ?
                 <tr key={key}>
@@ -127,7 +122,7 @@ const PVPUnitInfo = ({ unit }) => {
 
             {/* 详细信息部分 */}
             <div>
-                {unit.attackMethod.length != 0 &&
+                {unit.attackMethod.length !== 0 &&
                     <div style={{ paddingBottom: '2rem' }}>
                         <table style={{ width: '100%' }}>
                             <tbody>
@@ -139,7 +134,7 @@ const PVPUnitInfo = ({ unit }) => {
                             </tbody>
                         </table>
                     </div>}
-                {Object.keys(unit.abilities).length != 0 &&
+                {Object.keys(unit.abilities).length !== 0 &&
                     <div style={{ paddingBottom: '2rem' }}>
                         {Object.entries(unit.abilities).map(([key, value], index) => (
                             <table style={{ width: '100%' }} key={`pvp hero abili table ${index}`}>

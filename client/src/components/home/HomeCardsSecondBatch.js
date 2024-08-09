@@ -1,10 +1,4 @@
 import React from 'react';
-import ClickableCardSecondBatch from './ClickableCardSecondBatch';
-import Worldview from '../../static/images/Worldview.png';
-import Race from '../../static/images/Race.png';
-import Characters from '../../static/images/Characters.png';
-import Geography from '../../static/images/Geography.png';
-import NaturalResources from '../../static/images/NaturalResources.png';
 import '../../App.css';
 import '../../index.css';
 

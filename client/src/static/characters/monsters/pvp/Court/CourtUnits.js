@@ -1,6 +1,4 @@
-import React from "react"
 import { createUnit } from '../Functions'
-
 import CourtWarsmith from '../../../../images/monsters/court/CourtWarsmith.png'
 import CourtWarsmithIcon from '../../../../images/monsters/court/icon/CourtWarsmithIcon.png'
 import CourtHeavyGuard from '../../../../images/monsters/court/CourtHeavyGuard.png'
@@ -77,7 +75,7 @@ const CourtUnits = {
             ['禁卫军营'],
             {
                 '满弦': '强袭长弓兵消耗一个动作宣言后刷新自身2回合【满弦】状态，处于【满弦】状态下的强袭长弓兵无法移动，且遭受任何伤害导致健康减值超过150时，【满弦】状态立刻解除。' +
-                    '强袭长弓兵必须在【满弦】状态下才可以进行攻击宣言，受到强袭长弓兵伤害的目标，若体型不大于1格，则会被击退2格。' + '强袭长弓兵攻击后，【满弦】状态立刻解除。',
+                    '强袭长弓兵必须在【满弦】状态下才可以进行攻击宣言，受到强袭长弓兵伤害的目标，若体型不大于1格，则会被击退2格。强袭长弓兵攻击后，【满弦】状态立刻解除。',
                 '绝对指令（需要在战备司中升级）': '强袭长弓兵处于【满弦】状态时，免疫击倒、击退和暴击，且遭受伤害时无法再被打断。',
                 '穿心箭（需要在战备司中升级）': '强袭长弓兵的暴击值增加15点。',
             },

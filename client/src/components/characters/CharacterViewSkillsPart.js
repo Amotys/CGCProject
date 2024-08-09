@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import DefaultSkillsPoint from '../../static/skills/DefaultSkillsPoint';
 import SkillsName from '../../static/skills/SkillsName';
 
 const CharacterViewSkillsPart = ({ character }) => {
-    const [characterSkills, setCharacterSkills] = useState(character.skills);
+    const characterSkills = character.skills
 
     // 一旦角色发生变化，就立即重新计算点数，以满足物品和道具修正
     useEffect(() => {

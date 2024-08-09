@@ -59,6 +59,7 @@ const CharacterViewMagicPart = ({ character, setCurrentPage, setActiveButton }) 
                             <tr key={`${magic.name} ${index}`}>
                                 <td style={{ ...magicTableTdStyle, width: '16%' }}>
                                     <a onClick={() => buttonClick(`library_magics_${magic.idName}`)}
+                                        href="#"
                                         style={{
                                             textDecoration: 'underline',
                                             color: MagicColors[magic.attributeCategory],

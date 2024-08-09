@@ -1,6 +1,6 @@
 // 工具
 
-import React, { useState } from 'react';
+import React from 'react';
 import ToolsComponents from './tools components/ToolsComponents';
 import ToolsPagintor from './ToolsPagintor';
 import ClickableTool from './ClickableTool';

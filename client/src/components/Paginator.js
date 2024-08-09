@@ -24,7 +24,7 @@ const Paginator = ({
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, totalItemsCount);
         setPageItems(itemsArray.slice(startIndex, endIndex));
-    }, [currentPage, itemsPerPage, itemsArray]);
+    }, [currentPage, itemsPerPage, itemsArray]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleClick = (pageNumber) => {
         setCurrentPage(pageNumber);

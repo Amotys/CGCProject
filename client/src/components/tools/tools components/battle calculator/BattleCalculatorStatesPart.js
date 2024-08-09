@@ -87,7 +87,7 @@ const BattleCalculatorStatesPart = ({ leftData, rightData, setLeftData, setRight
             return parseFloat(numString) >= 0
         }
         const isFloat = (numString) => {
-            return parseFloat(parseInt(numString)) != parseFloat(numString)
+            return parseFloat(parseInt(numString)) !== parseFloat(numString)
         }
         const inRange = (numString, lower, upper) => {
             return lower <= parseFloat(numString) && parseFloat(numString) <= upper
@@ -378,7 +378,7 @@ const BattleCalculatorStatesPart = ({ leftData, rightData, setLeftData, setRight
                                                     </tr>
                                                 )
                                             }
-                                        }
+                                        } else {return <span key={`empty span ${index}`}></span>}
                                     })}
                                 </tbody>
                             </table>

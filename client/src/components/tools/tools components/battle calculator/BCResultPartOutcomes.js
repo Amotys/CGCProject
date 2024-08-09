@@ -1,4 +1,4 @@
-import React, { useState, useRef, useImperativeHandle, forwardRef } from "react";
+import React, { useState, useImperativeHandle, forwardRef } from "react";
 
 const BCResultPartOutcomes = forwardRef(({
     leftData,
@@ -334,7 +334,7 @@ const BCResultPartOutcomes = forwardRef(({
                 pushTip(subSymbol + `防御方的防御力：${defenderData.def}`)
                 pushTip(subSymbol + `攻击方的伤害类型：${prevData.selection.damageType}`)
 
-                if (prevData.selection.damageType == '真实伤害') {
+                if (prevData.selection.damageType === '真实伤害') {
                     pushTip(subSymbol + `攻击方的伤害类型为真实伤害，将直接计算攻击造成的相对伤害：攻击方的伤害值×攻击方的攻击力÷防御方的防御力
                     ×(100%+最后一搏伤害提升率)×(若背击：200%)`)
                     decreaseDealt = parseFloat((attackerData.dmg * attackerData.atk / defenderData.def *
@@ -343,7 +343,7 @@ const BCResultPartOutcomes = forwardRef(({
                 }
                 else {
                     pushTip(subSymbol + `攻击方造成伤害加成：${parseFloat((attackerData.bonus * 100).toFixed(6))}%`)
-                    if (prevData.selection.damageType == '灵能伤害') {
+                    if (prevData.selection.damageType === '灵能伤害') {
                         pushTip(subSymbol + `攻击方的伤害类型为灵能伤害，将直接计算攻击造成的相对伤害：攻击方的伤害值×攻击方造成伤害加成×
                         攻击方的攻击力÷防御方的防御力×(100%+最后一搏伤害提升率)×(若背击：200%)`)
                         decreaseDealt = parseFloat((attackerData.dmg * attackerData.atk * attackerData.bonus / defenderData.def *
@@ -379,6 +379,8 @@ const BCResultPartOutcomes = forwardRef(({
                                 break
                             case '源力魔法':
                                 currentPercentage = attackerData['源力魔法']
+                                break
+                            default:
                                 break
                         }
                         currentPercentage = parseFloat(currentPercentage.toFixed(6))
@@ -510,7 +512,7 @@ const BCResultPartOutcomes = forwardRef(({
                                             pushTip(subSymbol + `反击方的攻击力：${defenderData.atk}`)
                                             pushTip(subSymbol + `受击方的防御力：${attackerData.def}`)
                                             pushTip(subSymbol + `反击方的伤害类型：${nextData.selection.damageType}`)
-                                            if (nextData.selection.damageType == '真实伤害') {
+                                            if (nextData.selection.damageType === '真实伤害') {
                                                 pushTip(subSymbol + `反击方的伤害类型为真实伤害，将直接计算反击造成的相对伤害：反击方的伤害值×反击方的攻击力÷受击方的防御力
                                                 ×(100%+最后一搏伤害提升率)`)
                                                 counterDecreaseDealt = parseFloat((defenderData.dmg * defenderData.atk / attackerData.def *
@@ -518,7 +520,7 @@ const BCResultPartOutcomes = forwardRef(({
                                                 pushTip(subSymbol + subSymbol + `反击造成的相对伤害为：${counterDecreaseDealt}`)
                                             } else {
                                                 pushTip(subSymbol + `反击方造成伤害加成：${parseFloat((defenderData.bonus * 100).toFixed(6))}%`)
-                                                if (nextData.selection.damageType == '灵能伤害') {
+                                                if (nextData.selection.damageType === '灵能伤害') {
                                                     pushTip(subSymbol + `反击方的伤害类型为灵能伤害，将直接计算反击造成的相对伤害：反击方的伤害值×反击方造成伤害加成
                                                     ×反击方的攻击力÷受击方的防御力×(100%+最后一搏伤害提升率)`)
                                                     counterDecreaseDealt = parseFloat((defenderData.dmg * defenderData.atk * defenderData.bonus
@@ -554,6 +556,8 @@ const BCResultPartOutcomes = forwardRef(({
                                                             break
                                                         case '源力魔法':
                                                             currentPercentage = defenderData['源力魔法']
+                                                            break
+                                                        default:
                                                             break
                                                     }
                                                     currentPercentage = parseFloat(currentPercentage.toFixed(6))
@@ -615,7 +619,7 @@ const BCResultPartOutcomes = forwardRef(({
             }
             pushTip('====总结====')
             pushTip(subSymbol + `攻击方对防御方造成的最终伤害减值为：${decreaseDealt}，向下取整为：${Math.floor(decreaseDealt)}`)
-            if (counterDecreaseDealt != 0) {
+            if (counterDecreaseDealt !== 0) {
                 pushTip(subSymbol + `反击方对受反击方造成的最终伤害减值为：${counterDecreaseDealt}，向下取整为：${Math.floor(counterDecreaseDealt)}`)
             }
             setResult(stringArray)

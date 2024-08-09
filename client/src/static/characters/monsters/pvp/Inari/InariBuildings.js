@@ -1,4 +1,3 @@
-import React from "react"
 import { createBuilding } from '../Functions'
 import InariHuntingLodge from '../../../../images/monsters/inari/buildings/InariHuntingLodge.png'
 import InariForestMarket from '../../../../images/monsters/inari/buildings/InariForestMarket.png'

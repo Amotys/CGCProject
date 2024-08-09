@@ -40,9 +40,9 @@ const CharacterViewBasicStatus = ({ character }) => {
                             <tr>
                                 <td>性别：</td>
                                 <td><b>{
-                                    character.gender == 0 ? '女性' :
-                                        character.gender == 1 ? '男性' :
-                                            character.gender == 2 ? '无性' : '双性'}</b></td>
+                                    character.gender === 0 ? '女性' :
+                                        character.gender === 1 ? '男性' :
+                                            character.gender === 2 ? '无性' : '双性'}</b></td>
                             </tr>
 
                             <tr>

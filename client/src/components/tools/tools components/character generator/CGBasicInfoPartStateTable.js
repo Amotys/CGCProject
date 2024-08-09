@@ -43,8 +43,8 @@ const CGBasicInfoPartStateTable = ({ statesInfos }) => {
                             <td style={tableContentStyle}>{statesInfos[0][2]}</td>
                             <td style={tableTitleStyle}>具有源力：</td>
                             <td style={tableContentStyle}>{
-                                statesInfos[0][3] == 0 ?
-                                    '否' : statesInfos[0][3] == 1 ?
+                                statesInfos[0][3] === 0 ?
+                                    '否' : statesInfos[0][3] === 1 ?
                                         '是' : '自定义'}</td>
                         </tr>
                         <tr style={tableTrStyle}>
@@ -89,7 +89,7 @@ const CGBasicInfoPartStateTable = ({ statesInfos }) => {
                 }}>
                     <tbody>
                         {statesInfos[1].map((element, index) => (
-                            index == 0 ?
+                            index === 0 ?
                                 <tr style={tableTrStyle} rowSpan={statesInfos[1].length} key={`character generator basic info part states infos ${index}`}>
                                     <td style={{ ...tableTitleStyle, width: '20%', }}>{element[0]}</td>
                                     <td style={{ ...tableContentStyle, width: '80%', }}>{element[1]}</td>

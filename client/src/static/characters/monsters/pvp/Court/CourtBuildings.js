@@ -1,4 +1,3 @@
-import React from "react"
 import { createBuilding } from '../Functions'
 import CourtGeneralOffice from '../../../../images/monsters/court/buildings/CourtGeneralOffice.png'
 import CourtGovernorOffice from '../../../../images/monsters/court/buildings/CourtGovernorOffice.png'

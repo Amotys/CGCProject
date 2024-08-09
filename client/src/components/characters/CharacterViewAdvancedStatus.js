@@ -107,7 +107,7 @@ const CharacterViewAdvancedStatus = ({ character }) => {
                             <tr>
                                 <td>体型：</td>
                                 <td><b>{`${character.size[0]}格`}</b></td>
-                                <td><b>{character.size[0] == character.size[1] ? '' : `（${character.size[1]}格）`}</b></td>
+                                <td><b>{character.size[0] === character.size[1] ? '' : `（${character.size[1]}格）`}</b></td>
                             </tr>
                             {generateFaithTr('善恶信仰', 0, character.faith.morality)}
                             {generateFaithTr('秩序信仰', 1, character.faith.orderliness)}

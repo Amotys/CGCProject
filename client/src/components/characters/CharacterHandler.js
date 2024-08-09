@@ -8,7 +8,6 @@ import EmptyPagintor from '../EmptyPaginator';
 const CharacterHandler = ({ side, setCurrentCharacterPage, setCharacterActiveButton }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchOption, setSearchOption] = useState('title');
-    const [searchMessage, setSearchMessage] = useState('');
     const [searchedCharacterArray, setSearchedCharacterArray] = useState([]);
     const handleSearchInputChange = (event) => { setSearchTerm(event.target.value) };
     const handleSearchOptionChange = (event) => { setSearchOption(event.target.value) };
@@ -46,8 +45,7 @@ const CharacterHandler = ({ side, setCurrentCharacterPage, setCharacterActiveBut
         }
         const searchedCharacterCardsArray = searchedElements.map(createCharacterCard);
         setSearchedCharacterArray(searchedCharacterCardsArray);
-        setSearchMessage(searchTerm);
-    }, [side, searchTerm, searchOption]);
+    }, [side, searchTerm, searchOption]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const characterSearchBoxStyle = {
         padding: '0.5rem',

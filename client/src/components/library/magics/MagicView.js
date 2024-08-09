@@ -161,7 +161,7 @@ const MagicView = ({ name }) => {
                             <table style={{width:'30%',}}>
                                 <tbody>
                                     {magic.acquisitionMethods.map((method, index) => (
-                                        index == 0 ? (
+                                        index === 0 ? (
                                             <tr key={`acquisition methods ${index}`}>
                                                 <td rowSpan={magic.acquisitionMethods.length}
                                                     style={{ ...tableTdStyles, ...tableTitleTdStyles, width:'35%',}}>获取途径：</td>

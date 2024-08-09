@@ -1,12 +1,6 @@
 import React from "react";
 
-const iconStyleDouble = {
-    borderRadius: '2rem',
-    border: '0.25rem solid darkgreen',
-    width: '40%',
-}
-
-const iconStyleSingle = {
+const iconStyle = {
     borderRadius: '2rem',
     border: '0.25rem solid darkgreen',
     width: '20%',
@@ -31,7 +25,7 @@ const CGBasicInfoPartRaceIntro = ({ imageUrls, introInfos, data }) => {
                         display: 'flex',
                         justifyContent: 'center',
                     }}>
-                        <img src={imageUrls[0]} alt={`${data['racePart']}`} style={iconStyleSingle}></img>
+                        <img src={imageUrls[0]} alt={`${data['racePart']}`} style={iconStyle}></img>
                     </div>
                 </div>
             }

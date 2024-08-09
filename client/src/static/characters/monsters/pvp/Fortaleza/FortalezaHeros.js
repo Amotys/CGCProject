@@ -1,6 +1,4 @@
-import React from "react"
 import { createHero } from '../Functions'
-
 import FortalezaArchdraonst from '../../../../images/monsters/fortaleza/heros/FortalezaArchdraonst.png'
 import FortalezaArchdraonstIcon from '../../../../images/monsters/fortaleza/heros/FortalezaArchdraonstIcon.png'
 import FortalezaSerenibela from '../../../../images/monsters/fortaleza/heros/FortalezaSerenibela.png'

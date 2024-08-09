@@ -1,6 +1,4 @@
-import React from "react"
 import { createBuilding } from '../Functions'
-
 import FortalezaLizardChamber from '../../../../images/monsters/fortaleza/buildings/FortalezaLizardChamber.png'
 import FortalezaDragonHall from '../../../../images/monsters/fortaleza/buildings/FortalezaDragonHall.png'
 import FortalezaKingsHall from '../../../../images/monsters/fortaleza/buildings/FortalezaKingsHall.png'

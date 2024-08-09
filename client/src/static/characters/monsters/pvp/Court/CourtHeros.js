@@ -1,6 +1,4 @@
-import React from "react"
 import { createHero } from '../Functions'
-
 import CourtYunyi from '../../../../images/monsters/court/heros/CourtYunyi.png'
 import CourtYunyiIcon from '../../../../images/monsters/court/heros/CourtYunyiIcon.png'
 import CourtLinger from '../../../../images/monsters/court/heros/CourtLinger.png'

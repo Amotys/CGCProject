@@ -1,4 +1,3 @@
-import React from "react";
 import DefaultSkillsPoint from '../../skills/DefaultSkillsPoint';
 import MonsterTemplarsImage from '../../images/monsters/templar/MonsterTemplarsImage';
 

@@ -82,7 +82,7 @@ function App() {
                     textAlign: 'center',
                 }}>
                     <div className='flex flex-row'>
-                        <img src={MusicIcon} onClick={togglePlay} style={{
+                        <img src={MusicIcon} alt='music icon' onClick={togglePlay} style={{
                             width: '25%',
                             border: '0.3rem solid transparent',
                             margin: '0.6rem',

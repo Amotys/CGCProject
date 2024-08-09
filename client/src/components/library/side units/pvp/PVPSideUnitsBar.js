@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SideImage from '../../../../static/side/SideImage'
 
 const PVPSideUnitsBar = ({ setSide }) => {
@@ -23,7 +23,9 @@ const PVPSideUnitsBar = ({ setSide }) => {
                                 border: '0.3rem solid #43880f',
                                 borderRadius: '50%',
                                 cursor: 'pointer',
-                            }} src={value}
+                            }}
+                                src={value}
+                                alt={`side icon ${key}`}
                                 onClick={() => setSide(key)}
                             />
                         </div>

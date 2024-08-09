@@ -1,4 +1,0 @@
-进入client，运行powershell，“npm start”
-
-访问接口：localhost:3000
-

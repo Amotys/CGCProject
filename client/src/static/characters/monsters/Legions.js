@@ -1,4 +1,3 @@
-import React from "react";
 import DefaultSkillsPoint from '../../skills/DefaultSkillsPoint';
 import MonsterLegionsImage from '../../images/monsters/legion/MonsterLegionsImage';
 
