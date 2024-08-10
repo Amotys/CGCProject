@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CGCProject/static/css/main.460f6b92.css",
-    "main.js": "/CGCProject/static/js/main.dd3b6d4f.js",
+    "main.js": "/CGCProject/static/js/main.79dc8cb9.js",
     "static/js/453.258b012d.chunk.js": "/CGCProject/static/js/453.258b012d.chunk.js",
     "static/media/MainTheme.mp3": "/CGCProject/static/media/MainTheme.60cb9f20b052c9156107.mp3",
     "static/media/OthersHuaDiao.png": "/CGCProject/static/media/OthersHuaDiao.d95351dcd59b7dae3c85.png",
@@ -14,6 +14,7 @@
     "static/media/Library.png": "/CGCProject/static/media/Library.a5a3a93b0b54f4555060.png",
     "static/media/Characters.png": "/CGCProject/static/media/Characters.befaf8479987778e239c.png",
     "static/media/Geography.png": "/CGCProject/static/media/Geography.0a252726fc4a55ff0f0e.png",
+    "static/media/YggdrasilAncientBattlefield.png": "/CGCProject/static/media/YggdrasilAncientBattlefield.5870b2cd00330b9e58d4.png",
     "static/media/Worldview.png": "/CGCProject/static/media/Worldview.2094adf1711e77a4ffe2.png",
     "static/media/Race.png": "/CGCProject/static/media/Race.b54eb5c569fc0392bdc4.png",
     "static/media/InariShortbowAssassin.png": "/CGCProject/static/media/InariShortbowAssassin.3a30e641e51a8646641a.png",
@@ -184,6 +185,7 @@
     "static/media/Human.png": "/CGCProject/static/media/Human.900dc57096d243cdc49f.png",
     "static/media/Semonster.png": "/CGCProject/static/media/Semonster.e6b9bb41bbcdbf6672a0.png",
     "static/media/TypeNPC.png": "/CGCProject/static/media/TypeNPC.98599e378a0be1291542.png",
+    "static/media/AnchorBay.png": "/CGCProject/static/media/AnchorBay.d707245627e9f2d22a3c.png",
     "static/media/Toxica.png": "/CGCProject/static/media/Toxica.5c065c8c9c4ac42dc935.png",
     "static/media/Court.png": "/CGCProject/static/media/Court.5b4b9bcaab7e89a32958.png",
     "static/media/Sapphire.png": "/CGCProject/static/media/Sapphire.b661d8409d6c6fd568a8.png",
@@ -295,11 +297,11 @@
     "static/media/Food.png": "/CGCProject/static/media/Food.fb6d548d826554dbcc88.png",
     "index.html": "/CGCProject/index.html",
     "main.460f6b92.css.map": "/CGCProject/static/css/main.460f6b92.css.map",
-    "main.dd3b6d4f.js.map": "/CGCProject/static/js/main.dd3b6d4f.js.map",
+    "main.79dc8cb9.js.map": "/CGCProject/static/js/main.79dc8cb9.js.map",
     "453.258b012d.chunk.js.map": "/CGCProject/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.460f6b92.css",
-    "static/js/main.dd3b6d4f.js"
+    "static/js/main.79dc8cb9.js"
   ]
 }
