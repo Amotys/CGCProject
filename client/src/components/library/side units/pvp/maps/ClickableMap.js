@@ -1,8 +1,5 @@
-// 角色页面显示的角色卡框
-import React, { useState } from 'react';
-import ClickableCard from '../ClickableCard';
-import '../../App.css';
-import '../../index.css';
+import React, { useState } from "react"
+import ClickableCard from '../../../../ClickableCard'
 
 const clickableCardStyles = {
     boxClassName: 'flex flex-col',
@@ -10,10 +7,10 @@ const clickableCardStyles = {
         border: '0.2rem solid #1d5812',
         padding: '0.2rem',
         borderRadius: '2rem',
-        backgroundColor: 'rgba(86, 197, 70, 0.2)',
+        backgroundColor: 'rgba(86, 197, 70, 0.5)',
     },
     boxHoverStyle: {
-        backgroundColor: 'rgba(86, 197, 70, 0.5)',
+        backgroundColor: 'rgba(86, 197, 70, 0.8)',
     },
     imagedivStyle: {
         width: '100%',
@@ -26,7 +23,7 @@ const clickableCardStyles = {
         backgroundPosition: 'center',
         borderRadius: '2rem',
     },
-    textdivStyle:{
+    textdivStyle: {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
@@ -37,13 +34,13 @@ const clickableCardStyles = {
         textAlign: 'center',
         width: '100%',
     },
-    titledivStyle:{
+    titledivStyle: {
         display: 'flex',
         alignItems: 'center',
     },
     titleStyle: {
         padding: '0.5rem',
-        fontSize: '2rem',
+        fontSize: '1.5rem',
         fontFamily: 'KaiTi',
         fontWeight: 'bold',
         textAlign: 'center',
@@ -52,20 +49,28 @@ const clickableCardStyles = {
     },
 }
 
-const ClickableCharacterCard = ({ imageUrl, text, title, buttonClick, layoutReversed }) => {
-    const [isHovered, setIsHovered] = useState(false);
+const ClickableMap = ({ imageUrl, text, title }) => {
+    const [isHovered, setIsHovered] = useState(false)
     const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
+        setIsHovered(true)
+    }
     const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
+        setIsHovered(false)
+    }
+    const handleDownload = (name, imageUrl) => {
+        const link = document.createElement('a')
+        link.href = imageUrl
+        link.download = `{${name}.png}`
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
     return (
         <ClickableCard
             imageUrl={imageUrl}
             text={text}
             title={title}
-            buttonClick={buttonClick}
+            buttonClick={() => handleDownload(title, imageUrl)}
             boxClassName={clickableCardStyles.boxClassName}
             boxStyle={{
                 ...clickableCardStyles.boxStyle,
@@ -79,9 +84,9 @@ const ClickableCharacterCard = ({ imageUrl, text, title, buttonClick, layoutReve
             titleStyle={clickableCardStyles.titleStyle}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            reversed={layoutReversed}
+            reversed={false}
         />
-    );
+    )
 }
 
-export default ClickableCharacterCard;
+export default ClickableMap

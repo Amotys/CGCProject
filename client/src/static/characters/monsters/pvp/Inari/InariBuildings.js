@@ -19,7 +19,7 @@ const InariBuildings = {
     InariHuntingLodge:
         createBuilding(
             '狩猎小屋', 2500, 0, 0, 0,
-            0, 200, 0, [], 16,
+            0, 200, 0, [], 25,
             [275, 0, 0], [1, 0, 0, 20], 28,
             [0, 5], [],
             {
@@ -38,7 +38,7 @@ const InariBuildings = {
     InariForestMarket:
         createBuilding(
             '林间集市', 3000, 0, 0, 0,
-            0, 200, 0, [], 16,
+            0, 200, 0, [], 25,
             [500, 0, 0], [3, 0, 0, 40], 50,
             [0, 12], [],
             {
@@ -68,7 +68,7 @@ const InariBuildings = {
     InariForestSettlement:
         createBuilding(
             '森林聚居地', 4000, 0, 0, 0,
-            0, 200, 0, [], 16,
+            0, 200, 0, [], 25,
             [800, 0, 50], [16, 0, 1, 160], 82,
             [0, 20], [],
             {
@@ -110,7 +110,7 @@ const InariBuildings = {
     InariGreenFortress:
         createBuilding(
             '绿荫要塞', 5000, 0, 0, 0,
-            0, 200, 0, [], 16,
+            0, 200, 0, [], 25,
             [1300, 0, 200], [6, 0, 1, 50], 130,
             [0, 30], [],
             {

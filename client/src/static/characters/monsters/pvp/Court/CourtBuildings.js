@@ -27,7 +27,7 @@ const CourtBuildings = {
     CourtGeneralOffice:
         createBuilding(
             '都护府', 3500, 0, 0, 0,
-            0, 200, 0, [], 16,
+            0, 200, 0, [], 25,
             [600, 0, 0], [1, 0, 0, 12], 55,
             [0, 20], [],
             {
@@ -53,7 +53,7 @@ const CourtBuildings = {
     CourtGovernorOffice:
         createBuilding(
             '节度使府', 4750, 0, 0, 0,
-            0, 200, 0, [], 16,
+            0, 200, 0, [], 25,
             [900, 0, 100], [9, 0, 1, 95], 95,
             [0, 35], [],
             {
@@ -84,7 +84,7 @@ const CourtBuildings = {
     CourtHeavenlyStrategyOffice:
         createBuilding(
             '天策府', 6000, 0, 0, 0,
-            100, 250, 60, [], 16,
+            100, 250, 60, [], 25,
             [1400, 0, 300], [5, 0, 1, 40], 145,
             [0, 50], [],
             {
